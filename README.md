@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # TrelloAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
@@ -29,3 +30,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # trello-angular
 >>>>>>> cb8fd746650608c991baf5bd623c115e516c064b
+=======
+# trello-angular
+>>>>>>> 64ed00512e62e854c4883d0e711409157f0b7d8b
