@@ -1,1 +1,25 @@
+@import "./mixins";
 
+body {
+  background-color: cadetblue;
+}
+
+body,
+html {
+  position: relative;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+}

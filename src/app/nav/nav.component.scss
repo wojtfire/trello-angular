@@ -1,11 +1,113 @@
+@import "./src/scss/mixins";
 
-a.home-btn {
-  display: block;
-  border-radius: 5px;
-  height: 20px;
-  width: 20px;
+div {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
 
-  span::before {
-    content: "\f015";
+  a {
+    margin-right: 5px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    text-decoration: none;
+    color: white;
+    height: 100%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  a.home-btn {
+    align-self: center;
+    width: 32px;
+
+    span {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+    }
+
+    span::before {
+      content: url("src/assets/icons/home-solid.svg");
+      display: block;
+      padding: 7px;
+    }
+  }
+
+  a.table-btn {
+    max-width: 90px;
+    justify-content: space-between;
+
+    span.icon {
+      align-self: center;
+      display: block;
+      height: 32px;
+      width: 32px;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    span.icon::before {
+      content: url("src/assets/icons/trello-brands.svg");
+      display: block;
+      padding: 7px 8px;
+      max-height: 32px;
+    }
+
+    span.text {
+      align-self: center;
+      margin: 0 5px;
+
+      @include breakpoint-down(sm) {
+        display: none;
+      }
+    }
+  }
+
+  div.input-bar {
+    height: 100%;
+    padding: 0;
+    background-color: transparent;
+    position: relative;
+
+    input {
+      border-radius: 3px;
+      border: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 5px 30px 5px 10px;
+      max-width: 170px;
+
+      &.clicked {
+        background-color: white;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+    }
+
+    span.search {
+      display: block;
+      width: 30px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      &::before {
+        content: url("src/assets/icons/search-solid.svg");
+        display: block;
+        transform: rotate(90deg);
+        padding: 8px;
+        max-height: 32px;
+      }
+    }
   }
 }

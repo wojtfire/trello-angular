@@ -1,0 +1,50 @@
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/assets/fonts/Ubuntu-Bold.woff") format("woff"),
+    url("/assets/fonts/Ubuntu-Bold.woff2") format("woff2");
+}
+
+@mixin breakpoint-down($size) {
+  @if $size== "sm" {
+    @media screen and (max-width: $sm) {
+      @content;
+    }
+  } @else if $size== "md" {
+    @media screen and (max-width: $md) {
+      @content;
+    }
+  } @else if $size== "lg" {
+    @media screen and (max-width: $lg) {
+      @content;
+    }
+  } @else if $size== "xl" {
+    @media screen and (max-width: $xl) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoint-up($size) {
+  @if $size== "sm" {
+    @media screen and (min-width: $sm) {
+      @content;
+    }
+  } @else if $size== "md" {
+    @media screen and (min-width: $md) {
+      @content;
+    }
+  } @else if $size== "lg" {
+    @media screen and (min-width: $lg) {
+      @content;
+    }
+  } @else if $size== "xl" {
+    @media screen and (min-width: $xl) {
+      @content;
+    }
+  }
+}
