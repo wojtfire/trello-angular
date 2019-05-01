@@ -1,13 +1,27 @@
 @import "./src/scss/mixins";
 
-div {
+@mixin a-hover() {
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@mixin logo-hover() {
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.nav-container {
   display: flex;
   flex-direction: row;
+  position: relative;
   height: 40px;
   padding: 4px;
   background-color: rgba(0, 0, 0, 0.4);
 
-  a {
+  .home-btn,
+  .table-btn {
     margin-right: 5px;
     display: flex;
     align-content: center;
@@ -18,52 +32,51 @@ div {
     color: white;
     height: 100%;
     cursor: pointer;
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
+    @include a-hover();
   }
 
-  a.home-btn {
+  .home-btn {
     align-self: center;
     width: 32px;
 
-    span {
+    .home-btn-icon-span {
       display: inline-block;
       width: 32px;
       height: 32px;
-    }
 
-    span::before {
-      content: url("src/assets/icons/home-solid.svg");
-      display: block;
-      padding: 7px;
+      &::before {
+        content: url("src/assets/icons/home-solid.svg");
+        display: block;
+        padding: 7px;
+      }
     }
   }
 
-  a.table-btn {
+  .table-btn {
     max-width: 90px;
     justify-content: space-between;
 
-    span.icon {
+    .table-btn-icon {
       align-self: center;
       display: block;
       height: 32px;
       width: 32px;
       font-size: 16px;
       line-height: 16px;
+
+      &::before {
+        content: url("src/assets/icons/trello-brands.svg");
+        display: block;
+        padding: 7px 8px;
+        max-height: 32px;
+      }
     }
 
-    span.icon::before {
-      content: url("src/assets/icons/trello-brands.svg");
-      display: block;
-      padding: 7px 8px;
-      max-height: 32px;
-    }
-
-    span.text {
+    .table-btn-text-span {
       align-self: center;
-      margin: 0 5px;
+      margin: 0 10px 0 5px;
+      @include ubuntu(14px, white, 700);
+      line-height: 32px;
 
       @include breakpoint-down(sm) {
         display: none;
@@ -71,18 +84,23 @@ div {
     }
   }
 
-  div.input-bar {
+  .input-bar {
     height: 100%;
     padding: 0;
     background-color: transparent;
     position: relative;
 
-    input {
+    .input-bar-text {
+      height: 100%;
       border-radius: 3px;
       border: 0;
-      background-color: rgba(255, 255, 255, 0.3);
+      background-color: #ffffff4d;
       padding: 5px 30px 5px 10px;
       max-width: 170px;
+
+      @include breakpoint-down(md) {
+        display: none;
+      }
 
       &.clicked {
         background-color: white;
@@ -93,13 +111,14 @@ div {
       }
     }
 
-    span.search {
+    .input-bar-search-icon-span {
       display: block;
       width: 30px;
       height: 100%;
       position: absolute;
       top: 0;
       right: 0;
+      cursor: pointer;
 
       &::before {
         content: url("src/assets/icons/search-solid.svg");
@@ -108,6 +127,27 @@ div {
         padding: 8px;
         max-height: 32px;
       }
+    }
+  }
+
+  .trello-logo {
+    align-self: center;
+    display: block;
+    position: absolute;
+    top: 4px;
+    left: calc(50% - 80px);
+    height: calc(100% - 8px);
+    width: 80px;
+    background-color: transparent;
+
+    .trello-logo-span {
+      display: block;
+      width: 80px;
+      height: 100%;
+      background-image: url("src/assets/img/trello-logo-white.svg");
+      background-size: 80px 30px;
+      opacity: 0.6;
+      @include logo-hover();
     }
   }
 }

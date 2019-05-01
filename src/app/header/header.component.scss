@@ -1,0 +1,61 @@
+@import "./src/scss/mixins";
+
+div.container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  @include ubuntu(14px, white, 400);
+
+  .header-name {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 3px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .header-name-span {
+      display: inline-block;
+      padding: 0 10px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .header-name-inpt {
+      display: none;
+    }
+  }
+
+  .header-favorite-span {
+    display: inline-block;
+    width: 32px;
+    height: 100%;
+    padding: 9px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &::before {
+      content: url("/assets/icons/star-regular.svg");
+      display: block;
+    }
+  }
+
+  .line-span {
+    margin-left: 5px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    height: 16px;
+  }
+}
