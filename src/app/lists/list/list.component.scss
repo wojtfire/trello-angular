@@ -29,7 +29,7 @@
       width: 100%;
 
       .list-name {
-        width: 228px;
+        width: 220px;
         height: 30px;
         resize: none;
         border: 0;
@@ -41,6 +41,8 @@
         cursor: pointer;
         font-weight: 600;
         font-size: 14px;
+        overflow: hidden;
+        overflow-wrap: break-word;
 
         &:focus {
           cursor: text;
@@ -52,12 +54,23 @@
 
       .list-menu-btn {
         display: block;
-        height: 32px;
-        width: 32px;
+        height: 30px;
+        width: 30px;
+        padding: 7px;
         align-self: center;
+        margin-right: 8px;
+        border-radius: 3px;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3);
+        }
 
         &::before {
+          content: "";
           background: url("/assets/icons/ellipsis-h-solid.svg") no-repeat;
+          display: block;
+          height: 16px;
+          width: 16px;
         }
       }
     }
