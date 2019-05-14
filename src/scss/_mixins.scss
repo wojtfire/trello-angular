@@ -70,7 +70,7 @@ $xl: 1200px;
   font-family: "Ubuntu", sans-serif;
   font-size: $size;
   color: $color;
-  weight: $weight;
+  font-weight: $weight;
 }
 
 @mixin breakpoint-down($size) {
@@ -111,4 +111,10 @@ $xl: 1200px;
       @content;
     }
   }
+}
+
+@mixin box-shadow($horizontal, $vertical, $blur, $spread, $rgba) {
+  -webkit-box-shadow: $horizontal $vertical $blur $spread $rgba;
+  -moz-box-shadow: $horizontal $vertical $blur $spread $rgba;
+  box-shadow: $horizontal $vertical $blur $spread $rgba;
 }

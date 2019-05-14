@@ -2,7 +2,7 @@
 
 @mixin a-hover() {
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -20,7 +20,16 @@
   padding: 4px;
   background-color: rgba(0, 0, 0, 0.4);
 
-  .home-btn,
+  .home-btn {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+
+    .icon::before {
+      background: url("/assets/icons/home-solid.svg") no-repeat;
+    }
+  }
+
   .table-btn {
     margin-right: 5px;
     display: flex;
@@ -44,38 +53,24 @@
       width: 32px;
       height: 32px;
 
-      &::before {
-        content: url("src/assets/icons/home-solid.svg");
-        display: block;
-        padding: 7px;
+      .icon::before {
+        background: url("src/assets/icons/home-solid.svg") no-repeat;
       }
     }
   }
 
   .table-btn {
     max-width: 90px;
-    justify-content: space-between;
+    min-width: 32px;
 
-    .table-btn-icon {
-      align-self: center;
-      display: block;
-      height: 32px;
-      width: 32px;
-      font-size: 16px;
-      line-height: 16px;
-
-      &::before {
-        content: url("src/assets/icons/trello-brands.svg");
-        display: block;
-        padding: 7px 8px;
-        max-height: 32px;
-      }
+    .icon::before {
+      background: url("src/assets/icons/trello-brands.svg") no-repeat;
     }
 
     .table-btn-text-span {
       align-self: center;
-      margin: 0 10px 0 5px;
-      @include ubuntu(14px, white, 700);
+      padding: 0 5px 0 32px;
+      @include ubuntu(14px, white, 600);
       line-height: 32px;
 
       @include breakpoint-down(sm) {
@@ -86,17 +81,29 @@
 
   .input-bar {
     height: 100%;
+    max-width: 170px;
+    min-width: 32px;
     padding: 0;
     background-color: transparent;
     position: relative;
+    border-radius: 3px;
+    border: 0;
+    background-color: #ffffff4d;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    @include breakpoint-down(md) {
+      @include a-hover();
+    }
 
     .input-bar-text {
       height: 100%;
-      border-radius: 3px;
-      border: 0;
-      background-color: #ffffff4d;
       padding: 5px 30px 5px 10px;
       max-width: 170px;
+      background-color: transparent;
+      border: 0;
 
       @include breakpoint-down(md) {
         display: none;
@@ -105,28 +112,20 @@
       &.clicked {
         background-color: white;
       }
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.4);
-      }
     }
 
     .input-bar-search-icon-span {
-      display: block;
-      width: 30px;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      right: 0;
       cursor: pointer;
 
-      &::before {
-        content: url("src/assets/icons/search-solid.svg");
-        display: block;
-        transform: rotate(90deg);
-        padding: 8px;
-        max-height: 32px;
+      @include breakpoint-up(md) {
+        left: auto;
+        right: 5px;
       }
+    }
+
+    .icon::before {
+      background: url("src/assets/icons/search-solid.svg") no-repeat;
+      transform: rotate(90deg);
     }
   }
 
@@ -135,7 +134,7 @@
     display: block;
     position: absolute;
     top: 4px;
-    left: calc(50% - 80px);
+    left: calc(50% - 40px);
     height: calc(100% - 8px);
     width: 80px;
     background-color: transparent;
@@ -149,5 +148,38 @@
       opacity: 0.6;
       @include logo-hover();
     }
+  }
+}
+
+.icon-a {
+  margin-right: 5px;
+  display: block;
+  position: relative;
+  align-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  cursor: pointer;
+  @include a-hover();
+}
+
+.icon {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 32px;
+  width: 32px;
+  padding: 9px;
+
+  &::before {
+    content: "";
+    display: block;
+    margin: auto;
+    width: 14px;
+    height: 14px;
   }
 }
