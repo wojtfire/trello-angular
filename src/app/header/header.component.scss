@@ -35,6 +35,14 @@ div.container {
 
     .header-name-inpt {
       display: none;
+      padding: 0 10px;
+      font-size: 18px;
+      font-weight: 600;
+      height: inherit;
+      border: 0;
+      border-radius: inherit;
+      font-family: inherit;
+      cursor: text;
     }
   }
 
@@ -96,4 +104,8 @@ div.container {
     width: 14px;
     height: 14px;
   }
+}
+
+.isEditing {
+  display: none;
 }

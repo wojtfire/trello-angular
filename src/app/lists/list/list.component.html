@@ -1,14 +1,15 @@
 <div class="wrapper">
   <div class="list">
     <div class="list-header">
-      <textarea name="list-name" id="" cols="30" rows="10" class="list-name">
-Nazwa listy</textarea
-      >
+      <textarea name="list-name" id="" cols="30" rows="10" class="list-name">{{
+        list.name
+      }}</textarea>
       <a href="#" class="list-menu-btn"></a>
     </div>
-    <app-list-item></app-list-item>
-    <app-list-item></app-list-item>
-    <app-list-item></app-list-item>
+    <app-list-item
+      *ngFor="let listItem of list.items"
+      [listItem]="listItem"
+    ></app-list-item>
     <a class="add-list-item" href="#">+ Dodaj kartę</a>
   </div>
 </div>
