@@ -5,6 +5,19 @@
     (newListItem)="onAddItem($event)"
   ></app-list>
   <div class="addListWrapper">
-    <span class="addNextListBtn"><span class="icon"></span>Add next list</span>
+    <form>
+      <span class="addNextListBtn" (click)="onAddList()"
+        ><span class="icon"></span>Add next list</span
+      >
+      <div class="addListForm"></div>
+      <input
+        class=""
+        type="text"
+        name="name"
+        placeholder="Wprowadź tytuł listy"
+        maxlength="512"
+      />
+      <button>Add list</button>
+    </form>
   </div>
 </div>
