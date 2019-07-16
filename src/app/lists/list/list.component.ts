@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { List } from './list.model';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { List } from '../../model/list.model';
 
 @Component({
   selector: 'app-list',
@@ -8,8 +8,16 @@ import { List } from './list.model';
 })
 export class ListComponent implements OnInit {
   @Input() list: List;
+  @Output() newListItem = new EventEmitter<List>();
+  newItem = false;
 
   constructor() {}
 
   ngOnInit() {}
+
+  addListItem(list: List) {
+    this.newItem = true;
+    this.newListItem.emit(list);
+    this.newItem = false;
+  }
 }

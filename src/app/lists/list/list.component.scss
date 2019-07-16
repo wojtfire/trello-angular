@@ -1,4 +1,4 @@
-@import "./src/scss/mixins";
+@import './src/scss/mixins';
 
 @mixin background {
   background-color: rgb(215, 215, 215);
@@ -37,6 +37,7 @@
         padding: 7px 8px;
         margin-left: 8px;
         @include background();
+        @include ubuntu(14px, rgba(0, 0, 0, 0.7), 400);
         align-self: center;
         cursor: pointer;
         font-weight: 600;
@@ -66,8 +67,8 @@
         }
 
         &::before {
-          content: "";
-          background: url("/assets/icons/ellipsis-h-solid.svg") no-repeat;
+          content: '';
+          background: url('/assets/icons/ellipsis-h-solid.svg') no-repeat;
           display: block;
           height: 16px;
           width: 16px;
