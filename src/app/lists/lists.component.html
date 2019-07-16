@@ -1,3 +1,10 @@
 <div class="lists-container">
-  <app-list *ngFor="let list of lists" [list]="list"></app-list>
+  <app-list
+    *ngFor="let list of lists"
+    [list]="list"
+    (newListItem)="onAddItem($event)"
+  ></app-list>
+  <div class="addListWrapper">
+    <span class="addNextListBtn"><span class="icon"></span>Add next list</span>
+  </div>
 </div>

@@ -6,20 +6,20 @@ $(document).ready(function() {
 });
 
 function navInputFocus() {
-  $(".input-bar-text").focus(function() {
-    $(this).addClass("search-bar-focus");
+  $('.input-bar-text').focus(function() {
+    $(this).addClass('search-bar-focus');
   });
 
-  $(".input-bar-text").blur(function() {
-    $(this).val("");
-    $(this).removeClass("search-bar-focus");
+  $('.input-bar-text').blur(function() {
+    $(this).val('');
+    $(this).removeClass('search-bar-focus');
   });
 }
 
 function headerNameFocus() {
-  $(".header-name-span").click(function() {
+  $('.header-name-span').click(function() {
     var span = $(this);
-    var input = $(".header-name-inpt");
+    var input = $('.header-name-inpt');
     var text = span.text();
     var width = span.width();
     console.log(text);
@@ -45,17 +45,17 @@ function dragSite() {
   curXPos = 0;
   curYPos = 0;
 
-  $(".list").mouseenter(function() {
+  $('.list').mouseenter(function() {
     isOnList = true;
   });
 
-  $(".list").mouseleave(function() {
+  $('.list').mouseleave(function() {
     isOnList = false;
   });
 
   $(window).mousemove(function(m) {
     if (curDown === true) {
-      $(".lists-container").scrollLeft(
+      $('.lists-container').scrollLeft(
         $(window).scrollLeft() + (curXPos - m.pageX)
       );
     }

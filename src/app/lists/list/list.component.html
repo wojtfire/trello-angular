@@ -1,5 +1,5 @@
-<div class="wrapper">
-  <div class="list">
+<div class="wrapper" *ngIf="list">
+  <div class="list" *ngIf="list.items.length > 1">
     <div class="list-header">
       <textarea name="list-name" id="" cols="30" rows="10" class="list-name">{{
         list.name
@@ -10,6 +10,8 @@
       *ngFor="let listItem of list.items"
       [listItem]="listItem"
     ></app-list-item>
-    <a class="add-list-item" href="#">+ Dodaj kartę</a>
+    <a class="add-list-item" href="#" (click)="addListItem(list)"
+      >+ Dodaj kartę</a
+    >
   </div>
 </div>
