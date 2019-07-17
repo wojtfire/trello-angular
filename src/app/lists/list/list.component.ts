@@ -1,3 +1,4 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { List } from '../../model/list.model';
 
@@ -8,13 +9,31 @@ import { List } from '../../model/list.model';
 })
 export class ListComponent implements OnInit {
   @Input() list: List;
-  @Output() newListItem = new EventEmitter<List>();
+  @Output() newListItem = new EventEmitter<{ list: List; name: string }>();
+  newListItemToCreate = false;
+  listItemNameFormGroup: FormGroup;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.listItemNameFormGroup = new FormGroup({
+      name: new FormControl(null, [Validators.required])
+    });
+  }
 
-  addListItem(list: List) {
-    this.newListItem.emit(list);
+  addListItem(currentList: List) {
+    this.newListItem.emit({
+      list: currentList,
+      name: this.listItemNameFormGroup.value.name
+    });
+    this.listItemNameFormGroup.reset();
+  }
+
+  hideAddListItemForm() {
+    this.newListItemToCreate = !this.newListItemToCreate;
+  }
+
+  showListItemForm() {
+    this.newListItemToCreate = !this.newListItemToCreate;
   }
 }

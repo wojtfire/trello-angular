@@ -1,4 +1,4 @@
-@import "./mixins";
+@import './mixins';
 
 body {
   background-color: rgb(170, 169, 169);
@@ -25,7 +25,6 @@ html {
   box-sizing: inherit;
 }
 
-input:focus,
-textarea:focus {
+*:focus {
   outline: none;
 }

@@ -1,5 +1,7 @@
 import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { List } from '../model/list.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { registerContentQuery } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-lists',
@@ -8,14 +10,22 @@ import { List } from '../model/list.model';
 })
 export class ListsComponent implements OnInit {
   lists: List[] = [
-    new List('To do'),
-    new List('In progress'),
-    new List('Done')
+    new List('To do', 1),
+    new List('In progress', 2),
+    new List('Done', 3)
   ];
+  listNameFormGroup: FormGroup;
+  newName: string;
+  showListForm = false;
+  windowOpen = false;
 
   constructor() {}
 
   ngOnInit() {
+    this.listNameFormGroup = new FormGroup({
+      name: new FormControl(null, [Validators.required])
+    });
+
     this.lists[0].items.push({
       name: 'Think about UI for personal website bla bla bla',
       description: 'Choose template, colors, animations.',
@@ -85,17 +95,42 @@ export class ListsComponent implements OnInit {
     });
   }
 
-  onAddItem(list: List) {
-    if (list) {
+  onAddItem(object: { list: List; name: string }) {
+    if (object.name && object.list) {
       this.lists
-        .find(actualList => actualList.name === list.name)
+        .find(actualList => actualList.id === object.list.id)
         .items.push({
-          name: '',
+          name: object.name,
           description: '',
           comment: ''
         });
     }
   }
 
-  onAddList() {}
+  clear() {
+    this.newName = '';
+  }
+
+  addList() {
+    if (this.listNameFormGroup.valid) {
+      let id = 0;
+      this.lists.map(list => (list.id > id ? (id = list.id + 1) : (id = id)));
+      this.lists.push(new List(this.listNameFormGroup.value.name, id));
+      this.listNameFormGroup.reset();
+    }
+  }
+
+  showAddListForm() {
+    this.showListForm = !this.showListForm;
+    this.windowOpen = !this.windowOpen;
+  }
+
+  hideAddListForm() {
+    this.showListForm = !this.showListForm;
+  }
+
+  closeWindow() {
+    if (this.windowOpen) {
+    }
+  }
 }

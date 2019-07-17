@@ -4,20 +4,30 @@
     [list]="list"
     (newListItem)="onAddItem($event)"
   ></app-list>
-  <div class="addListWrapper">
-    <form>
-      <span class="addNextListBtn" (click)="onAddList()"
-        ><span class="icon"></span>Add next list</span
-      >
+  <div class="newListWrapper">
+    <div class="addListWrapper" [class.is-hidden]="showListForm">
+      <span class="addNextListBtn" (click)="showAddListForm()">
+        <span class="icon"></span>
+        Add next list
+      </span>
+    </div>
+    <div class="addListFormWrapper" [class.is-visible]="showListForm">
       <div class="addListForm"></div>
-      <input
-        class=""
-        type="text"
-        name="name"
-        placeholder="Wprowadź tytuł listy"
-        maxlength="512"
-      />
-      <button>Add list</button>
-    </form>
+      <form [formGroup]="listNameFormGroup" (ngSubmit)="addList()">
+        <input
+          class="addListInput"
+          type="text"
+          placeholder="Enter list name"
+          maxlength="512"
+          formControlName="name"
+        />
+        <div class="newListItemBtns">
+          <button type="submit" class="newListItemBtn">
+            Add list
+          </button>
+          <span class="exitIcon" (click)="hideAddListForm()"></span>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

@@ -4,57 +4,57 @@ $lg: 992px;
 $xl: 1200px;
 
 @font-face {
-  font-family: "Ubuntu";
-  src: url("/assets/fonts/Ubuntu-Bold.woff") format("woff"),
-    url("/assets/fonts/Ubuntu-Bold.woff2") format("woff2");
+  font-family: 'Ubuntu';
+  src: url('/assets/fonts/Ubuntu-Bold.woff') format('woff'),
+    url('/assets/fonts/Ubuntu-Bold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Ubuntu";
-  src: url("/assets/fonts/Ubuntu-BoldItalic.woff") format("woff"),
-    url("/assets/fonts/Ubuntu-BoldItalic.woff2") format("woff2");
+  font-family: 'Ubuntu';
+  src: url('/assets/fonts/Ubuntu-BoldItalic.woff') format('woff'),
+    url('/assets/fonts/Ubuntu-BoldItalic.woff2') format('woff2');
   font-weight: 600;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Ubuntu";
-  src: url("/assets/fonts/Ubuntu-Light.woff") format("woff"),
-    url("/assets/fonts/Ubuntu-Light.woff2") format("woff2");
+  font-family: 'Ubuntu';
+  src: url('/assets/fonts/Ubuntu-Light.woff') format('woff'),
+    url('/assets/fonts/Ubuntu-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Ubuntu";
-  src: url("/assets/fonts/Ubuntu-LightItalic.woff") format("woff"),
-    url("/assets/fonts/Ubuntu-LightItalic.woff2") format("woff2");
+  font-family: 'Ubuntu';
+  src: url('/assets/fonts/Ubuntu-LightItalic.woff') format('woff'),
+    url('/assets/fonts/Ubuntu-LightItalic.woff2') format('woff2');
   font-weight: 300;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Ubuntu";
-  src: url("/assets/fonts/Ubuntu-Medium.woff") format("woff"),
-    url("/assets/fonts/Ubuntu-Medium.woff2") format("woff2");
+  font-family: 'Ubuntu';
+  src: url('/assets/fonts/Ubuntu-Medium.woff') format('woff'),
+    url('/assets/fonts/Ubuntu-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Ubuntu";
-  src: url("/assets/fonts/Ubuntu-MediumItalic.woff") format("woff"),
-    url("/assets/fonts/Ubuntu-MediumItalic.woff2") format("woff2");
+  font-family: 'Ubuntu';
+  src: url('/assets/fonts/Ubuntu-MediumItalic.woff') format('woff'),
+    url('/assets/fonts/Ubuntu-MediumItalic.woff2') format('woff2');
   font-weight: 500;
   font-style: italic;
 }
 
 @font-face {
-  font-family: "Ubuntu";
-  src: url("/assets/fonts/Ubuntu-Regular.woff") format("woff"),
-    url("/assets/fonts/Ubuntu-Regular.woff2") format("woff2");
+  font-family: 'Ubuntu';
+  src: url('/assets/fonts/Ubuntu-Regular.woff') format('woff'),
+    url('/assets/fonts/Ubuntu-Regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -67,26 +67,26 @@ $xl: 1200px;
 }
 
 @mixin ubuntu($size, $color, $weight) {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-size: $size;
   color: $color;
   font-weight: $weight;
 }
 
 @mixin breakpoint-down($size) {
-  @if $size== "sm" {
+  @if $size== 'sm' {
     @media screen and (max-width: $sm) {
       @content;
     }
-  } @else if $size== "md" {
+  } @else if $size== 'md' {
     @media screen and (max-width: $md) {
       @content;
     }
-  } @else if $size== "lg" {
+  } @else if $size== 'lg' {
     @media screen and (max-width: $lg) {
       @content;
     }
-  } @else if $size== "xl" {
+  } @else if $size== 'xl' {
     @media screen and (max-width: $xl) {
       @content;
     }
@@ -94,19 +94,19 @@ $xl: 1200px;
 }
 
 @mixin breakpoint-up($size) {
-  @if $size== "sm" {
+  @if $size== 'sm' {
     @media screen and (min-width: $sm) {
       @content;
     }
-  } @else if $size== "md" {
+  } @else if $size== 'md' {
     @media screen and (min-width: $md) {
       @content;
     }
-  } @else if $size== "lg" {
+  } @else if $size== 'lg' {
     @media screen and (min-width: $lg) {
       @content;
     }
-  } @else if $size== "xl" {
+  } @else if $size== 'xl' {
     @media screen and (min-width: $xl) {
       @content;
     }
@@ -117,4 +117,55 @@ $xl: 1200px;
   -webkit-box-shadow: $horizontal $vertical $blur $spread $rgba;
   -moz-box-shadow: $horizontal $vertical $blur $spread $rgba;
   box-shadow: $horizontal $vertical $blur $spread $rgba;
+}
+
+@mixin newItemBtns {
+  .newListItemBtns {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 4px;
+
+    .newListItemBtn {
+      display: block;
+      width: 92px;
+      height: 30px;
+      background-color: #5aac44;
+      border: 0;
+      border-radius: 3px;
+      @include ubuntu(14px, white, 400);
+      @include box-shadow(0px, 1px, 1px, 0px, rgba(0, 0, 0, 0.35));
+      cursor: pointer;
+
+      &:hover {
+        background-color: #61bd4f;
+      }
+    }
+
+    .exitIcon {
+      position: relative;
+      display: block;
+      align-content: center;
+      height: 28px;
+      width: 28px;
+      align-self: center;
+      border-radius: 3px;
+      padding: 3px;
+      margin-left: 4px;
+      cursor: pointer;
+      opacity: 0.6;
+
+      &::before {
+        content: '';
+        background: url('/assets/icons/times-solid.svg') no-repeat;
+        display: block;
+        height: 22px;
+        width: 22px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
 }
