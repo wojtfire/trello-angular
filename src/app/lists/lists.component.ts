@@ -1,4 +1,4 @@
-import { Component, Output, OnInit } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 import { List } from '../model/list.model';
 
 @Component({
@@ -17,31 +17,35 @@ export class ListsComponent implements OnInit {
 
   ngOnInit() {
     this.lists[0].items.push({
+      name: 'Think about UI for personal website bla bla bla',
+      description: 'Choose template, colors, animations.',
+      comment: '',
+      priority: 'green'
+    });
+    this.lists[0].items.push({
       name: 'Think about UI for personal website',
       description: 'Choose template, colors, animations.',
       comment: '',
-      priority: 'red'
+      priority: 'yellow'
     });
     this.lists[0].items.push({
       name: 'Think about UI for personal website',
       description: 'Choose template, colors, animations.',
-      comment: ''
-    });
-    this.lists[0].items.push({
-      name: 'Think about UI for personal website',
-      description: 'Choose template, colors, animations.',
-      comment: ''
+      comment: '',
+      priority: 'blue'
     });
 
     this.lists[1].items.push({
       name: 'Think about UI for personal website',
       description: 'Choose template, colors, animations.',
-      comment: ''
+      comment: '',
+      priority: 'purple'
     });
     this.lists[1].items.push({
       name: 'Think about UI for personal website',
       description: 'Choose template, colors, animations.',
-      comment: ''
+      comment: '',
+      priority: 'orange'
     });
     this.lists[1].items.push({
       name: 'Think about UI for personal website',
@@ -92,4 +96,6 @@ export class ListsComponent implements OnInit {
         });
     }
   }
+
+  onAddList() {}
 }

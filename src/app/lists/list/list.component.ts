@@ -9,15 +9,12 @@ import { List } from '../../model/list.model';
 export class ListComponent implements OnInit {
   @Input() list: List;
   @Output() newListItem = new EventEmitter<List>();
-  newItem = false;
 
   constructor() {}
 
   ngOnInit() {}
 
   addListItem(list: List) {
-    this.newItem = true;
     this.newListItem.emit(list);
-    this.newItem = false;
   }
 }

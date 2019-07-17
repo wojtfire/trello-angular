@@ -33,9 +33,36 @@ $color: priority-color;
       height: 8px;
       border-radius: 3px;
     }
+
+    .priority- {
+      &green {
+        background-color: #61bd4f;
+      }
+
+      &red {
+        background-color: #eb5a46;
+      }
+
+      &yellow {
+        background-color: #f2d600;
+      }
+
+      &orange {
+        background-color: #ff9f1a;
+      }
+
+      &purple {
+        background-color: #c377e0;
+      }
+
+      &blue {
+        background-color: #0079bf;
+      }
+    }
   }
 
   .list-item-name {
+    display: block;
     padding: 4px;
   }
 }
