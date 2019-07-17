@@ -1,4 +1,10 @@
-import { Component, Output, OnInit, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Output,
+  OnInit,
+  EventEmitter,
+  HostListener
+} from '@angular/core';
 import { List } from '../model/list.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { registerContentQuery } from '@angular/core/src/render3';
@@ -120,17 +126,25 @@ export class ListsComponent implements OnInit {
     }
   }
 
-  showAddListForm() {
+  showAddListForm(event: Event) {
     this.showListForm = !this.showListForm;
     this.windowOpen = !this.windowOpen;
+    event.preventDefault();
+    event.stopPropagation();
+    this.hideOnClickOutside(event);
   }
 
   hideAddListForm() {
     this.showListForm = !this.showListForm;
+    this.listNameFormGroup.reset();
   }
 
   closeWindow() {
     if (this.windowOpen) {
     }
+  }
+
+  @HostListener('document.click', ['$event']) hideOnClickOutside(event: Event) {
+    console.log('ok');
   }
 }

@@ -31,6 +31,7 @@ export class ListComponent implements OnInit {
 
   hideAddListItemForm() {
     this.newListItemToCreate = !this.newListItemToCreate;
+    this.listItemNameFormGroup.reset();
   }
 
   showListItemForm() {
