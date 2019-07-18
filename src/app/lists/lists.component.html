@@ -4,7 +4,7 @@
     [list]="list"
     (newListItem)="onAddItem($event)"
   ></app-list>
-  <div class="newListWrapper">
+  <div #newItemWrapper class="newListWrapper">
     <div class="addListWrapper" [class.is-hidden]="showListForm">
       <span class="addNextListBtn" (click)="showAddListForm($event)">
         <span class="icon"></span>

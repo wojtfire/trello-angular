@@ -1,13 +1,15 @@
 import {
   Component,
-  Output,
   OnInit,
-  EventEmitter,
-  HostListener
+  HostListener,
+  ElementRef,
+  ViewChild,
+  ViewChildren,
+  QueryList,
+  AfterViewInit
 } from '@angular/core';
 import { List } from '../model/list.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { registerContentQuery } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-lists',
@@ -15,6 +17,8 @@ import { registerContentQuery } from '@angular/core/src/render3';
   styleUrls: ['./lists.component.scss']
 })
 export class ListsComponent implements OnInit {
+  @ViewChild('newItemWrapper') newItemWrapper: ElementRef;
+
   lists: List[] = [
     new List('To do', 1),
     new List('In progress', 2),
@@ -101,6 +105,10 @@ export class ListsComponent implements OnInit {
     });
   }
 
+  // ngAfterViewInit() {
+  //   console.log(this.newItemWrapper.nativeElement);
+  // }
+
   onAddItem(object: { list: List; name: string }) {
     if (object.name && object.list) {
       this.lists
@@ -111,10 +119,6 @@ export class ListsComponent implements OnInit {
           comment: ''
         });
     }
-  }
-
-  clear() {
-    this.newName = '';
   }
 
   addList() {
@@ -131,7 +135,6 @@ export class ListsComponent implements OnInit {
     this.windowOpen = !this.windowOpen;
     event.preventDefault();
     event.stopPropagation();
-    this.hideOnClickOutside(event);
   }
 
   hideAddListForm() {
@@ -139,12 +142,13 @@ export class ListsComponent implements OnInit {
     this.listNameFormGroup.reset();
   }
 
-  closeWindow() {
-    if (this.windowOpen) {
+  @HostListener('click', ['$event'])
+  hideOnClickOutside(event: Event) {
+    if (this.showListForm) {
+      const parent = (event.target as HTMLElement).parentElement;
+      if (!this.newItemWrapper.nativeElement.contains(parent)) {
+        this.showListForm = false;
+      }
     }
-  }
-
-  @HostListener('document.click', ['$event']) hideOnClickOutside(event: Event) {
-    console.log('ok');
   }
 }
