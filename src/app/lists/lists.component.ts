@@ -105,10 +105,6 @@ export class ListsComponent implements OnInit {
     });
   }
 
-  // ngAfterViewInit() {
-  //   console.log(this.newItemWrapper.nativeElement);
-  // }
-
   onAddItem(object: { list: List; name: string }) {
     if (object.name && object.list) {
       this.lists
@@ -139,7 +135,6 @@ export class ListsComponent implements OnInit {
 
   hideAddListForm() {
     this.showListForm = !this.showListForm;
-    this.listNameFormGroup.reset();
   }
 
   @HostListener('click', ['$event'])

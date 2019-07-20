@@ -12,26 +12,33 @@
         [listItem]="listItem"
       ></app-list-item>
     </div>
-    <a
-      class="add-list-item"
-      (click)="showListItemForm()"
-      *ngIf="!newListItemToCreate"
-    >
-      <span class="addIcon"></span>Add next card
-    </a>
-    <div class="newListItemWrapper" *ngIf="newListItemToCreate">
-      <form [formGroup]="listItemNameFormGroup" (ngSubmit)="addListItem(list)">
-        <textarea
-          class="listItemNameInpt"
-          formControlName="name"
-          placeholder="Enter name for this card..."
-          #newName
-        ></textarea>
-        <div class="newListItemBtns">
-          <button class="newListItemBtn">Add card</button>
-          <span class="exitIcon" (click)="hideAddListItemForm()"></span>
-        </div>
-      </form>
+    <div #newListItemWrapper class="newListItemWrapper">
+      <div class="formWrapper" [class.is-visible]="newListItemToCreate">
+        <form
+          [formGroup]="listItemNameFormGroup"
+          (ngSubmit)="addListItem(list)"
+        >
+          <textarea
+            class="listItemNameInpt"
+            formControlName="name"
+            placeholder="Enter name for this card..."
+            #newName
+          ></textarea>
+          <div class="newListItemBtns">
+            <button class="newListItemBtn">
+              Add card
+            </button>
+            <span class="exitIcon" (click)="hideAddListItemForm()"></span>
+          </div>
+        </form>
+      </div>
+      <a
+        class="add-list-item"
+        (click)="showListItemForm()"
+        [class.is-hidden]="newListItemToCreate"
+      >
+        <span class="addIcon"></span>Add next card
+      </a>
     </div>
   </div>
 </div>

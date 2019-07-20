@@ -1,5 +1,14 @@
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  HostListener,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
 import { List } from '../../model/list.model';
 
 @Component({
@@ -8,7 +17,9 @@ import { List } from '../../model/list.model';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Input() list: List;
+  @ViewChild('newListItemWrapper') newListItemWrapper: ElementRef;
+  @Input()
+  list: List;
   @Output() newListItem = new EventEmitter<{ list: List; name: string }>();
   newListItemToCreate = false;
   listItemNameFormGroup: FormGroup;
@@ -36,5 +47,16 @@ export class ListComponent implements OnInit {
 
   showListItemForm() {
     this.newListItemToCreate = !this.newListItemToCreate;
+  }
+
+  @HostListener('click', ['$event'])
+  hideOnClickOutside(event: Event) {
+    if (this.newListItemToCreate) {
+      const parent = (event.target as HTMLElement).parentElement;
+      if (!this.newListItemWrapper.nativeElement.contains(parent)) {
+        this.addListItem(this.list);
+        this.newListItemToCreate = false;
+      }
+    }
   }
 }
